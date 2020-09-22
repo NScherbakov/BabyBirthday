@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Nanit-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="WelcomeViewController" title="Nanit" id="BYZ-38-t0r" customClass="WelcomeViewController" customModule="BabyBirthday" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZIl-dE-lGH">
+                                <rect key="frame" x="20" y="95" width="335" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Baby Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yZz-Kp-Rag">
+                                <rect key="frame" x="20" y="70" width="137.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose date birthday:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wEo-ID-2PX">
+                                <rect key="frame" x="20" y="159" width="170" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Birthday" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m8a-8j-zFZ">
+                                <rect key="frame" x="20" y="184" width="335" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="companyIcon" translatesAutoresizingMaskIntoConstraints="NO" id="ad4-Zh-HkX">
+                                <rect key="frame" x="159" y="20" width="57" height="20"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="za9-An-87k">
+                                <rect key="frame" x="20" y="627" width="335" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="mci-zn-Ch8"/>
+                                </constraints>
+                                <state key="normal" title="Show Birthday"/>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeholder_camera_blue" translatesAutoresizingMaskIntoConstraints="NO" id="xcA-H4-0TH">
+                                <rect key="frame" x="52.5" y="248" width="270" height="270"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ejM-N5-FRW">
+                                <rect key="frame" x="169.5" y="528" width="36" height="36"/>
+                                <state key="normal" backgroundImage="Camera_icon_blue"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="wEo-ID-2PX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="4YN-ug-8YA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="za9-An-87k" secondAttribute="bottom" constant="10" id="8Db-bh-C6N"/>
+                            <constraint firstItem="ZIl-dE-lGH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="CQc-S7-HLJ"/>
+                            <constraint firstItem="wEo-ID-2PX" firstAttribute="top" secondItem="ZIl-dE-lGH" secondAttribute="bottom" constant="30" id="HXr-Ml-Xaa"/>
+                            <constraint firstItem="ad4-Zh-HkX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="INI-aW-FmE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="m8a-8j-zFZ" secondAttribute="trailing" constant="20" id="VsD-75-SPE"/>
+                            <constraint firstItem="m8a-8j-zFZ" firstAttribute="top" secondItem="wEo-ID-2PX" secondAttribute="bottom" constant="4" id="Yxy-8k-kuw"/>
+                            <constraint firstItem="yZz-Kp-Rag" firstAttribute="top" secondItem="ad4-Zh-HkX" secondAttribute="bottom" constant="30" id="aqq-fA-LDz"/>
+                            <constraint firstItem="ZIl-dE-lGH" firstAttribute="top" secondItem="yZz-Kp-Rag" secondAttribute="bottom" constant="4" id="bOa-Lx-1Aq"/>
+                            <constraint firstItem="xcA-H4-0TH" firstAttribute="top" secondItem="m8a-8j-zFZ" secondAttribute="bottom" constant="30" id="bPJ-fk-toD"/>
+                            <constraint firstItem="ejM-N5-FRW" firstAttribute="top" secondItem="xcA-H4-0TH" secondAttribute="bottom" constant="10" id="cKe-PF-1AT"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="za9-An-87k" secondAttribute="trailing" constant="20" id="deA-32-oTE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wEo-ID-2PX" secondAttribute="trailing" symbolic="YES" id="fRg-gj-okQ"/>
+                            <constraint firstItem="m8a-8j-zFZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="hLI-ey-ltA"/>
+                            <constraint firstItem="ejM-N5-FRW" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="jSM-sJ-J9H"/>
+                            <constraint firstItem="za9-An-87k" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="s5H-fj-ip0"/>
+                            <constraint firstItem="xcA-H4-0TH" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="s6P-8T-ofo"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZIl-dE-lGH" secondAttribute="trailing" constant="20" id="srv-S3-D28"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yZz-Kp-Rag" secondAttribute="trailing" symbolic="YES" id="sso-Hb-yJO"/>
+                            <constraint firstItem="ZIl-dE-lGH" firstAttribute="top" secondItem="yZz-Kp-Rag" secondAttribute="bottom" constant="4" id="uWz-fN-eeu"/>
+                            <constraint firstItem="yZz-Kp-Rag" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="uax-Ih-XTF"/>
+                            <constraint firstItem="ad4-Zh-HkX" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="x1f-mo-RCN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="137.18140929535232"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Camera_icon_blue" width="36" height="36"/>
+        <image name="Placeholder_camera_blue" width="270" height="270"/>
+        <image name="companyIcon" width="57" height="20"/>
+    </resources>
+</document>
