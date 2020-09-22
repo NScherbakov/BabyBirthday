@@ -14,17 +14,21 @@ class WelcomeViewController: UIViewController {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var birhdayTextField: UITextField!
-    @IBOutlet weak var imageView: UITextField!
+    @IBOutlet weak var imagePhotoView: UIImageView!
+    @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var showBirtdayButton: UIButton!
     
     // MARK: - Variables
     
-    var presenter: WelcomePresenter?
+    var presenter: WelcomeViewOutput?
     
     // MARK: - Override
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter?.viewDidLoad()
+        configTextFields()
+        configButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,11 +37,87 @@ class WelcomeViewController: UIViewController {
     }
 }
 
+// MARK: - Actions
+
+extension WelcomeViewController {
+    @objc func didChangeText(textField: UITextField) {
+        configButton()
+    }
+    
+    @IBAction func showBirthdayTapped() {
+        guard let nameText = nameTextField.text, let birhdayText = birhdayTextField.text else {
+            return
+        }
+        
+        if nameText.isEmpty && birhdayText.isEmpty {
+            let alert = UIAlertController(title: "Sorry", message: "Fill all fields",
+                                          preferredStyle: UIAlertController.Style.alert)
+
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in }))
+            present(alert, animated: true, completion: nil)
+        } else {
+            
+        }
+    }
+}
+
+// MARK: - Private
+
+private extension WelcomeViewController {
+    func configTextFields() {
+        nameTextField.addTarget(self, action: #selector(didChangeText(textField:)), for: .editingChanged)
+        
+        let commonToolbar = CommonToolbar()
+//        commonToolbar.toolbarDelegate = self
+        commonToolbar.update()
+        
+        birhdayTextField.inputView = DatePicker().datePicker
+        birhdayTextField.inputAccessoryView = commonToolbar
+    }
+    
+    func configButton() {
+        guard let nameText = nameTextField.text, let birhdayText = birhdayTextField.text else {
+            return
+        }
+        
+        let isEnabled = !nameText.isEmpty && !birhdayText.isEmpty
+        showBirtdayButton.alpha = isEnabled ? 1 : 0.2
+    }
+}
+
+// MARK: - WelcomeViewInput
+
+extension WelcomeViewController: WelcomeViewInput {
+    func configWithPresentation(type: PresentationType) {
+        view.backgroundColor = type.color
+        cameraButton.setBackgroundImage(type.iconCamera, for: .normal)
+        imagePhotoView.image = type.iconPlacehoderCamera
+    }
+    
+    func updateNameTextField(text: String?) {
+        nameTextField.text = text
+    }
+    
+    func updateBirthdayTextField(text: String?) {
+        birhdayTextField.text = text
+    }
+    
+    func update(photo: UIImage?) {
+        imagePhotoView.image = photo
+    }
+}
+
+// MARK: - UITextFieldDelegate
+
 extension WelcomeViewController: UITextFieldDelegate {
-//    func textField(_ textField: UITextField,
-//                   shouldChangeCharactersIn range: NSRange,
-//                   replacementString string: String) -> Bool {
-//        
-//    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == nameTextField {
+            birhdayTextField.becomeFirstResponder()
+        } else {
+            birhdayTextField.resignFirstResponder()
+        }
+        
+        return true
+    }
 }
 

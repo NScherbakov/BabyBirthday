@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="ipad9_7" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,13 +12,16 @@
             <objects>
                 <viewController storyboardIdentifier="WelcomeViewController" title="Nanit" id="BYZ-38-t0r" customClass="WelcomeViewController" customModule="BabyBirthday" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZIl-dE-lGH">
-                                <rect key="frame" x="20" y="95" width="335" height="34"/>
+                                <rect key="frame" x="20" y="95" width="728" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="mVQ-GF-CE9"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Baby Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yZz-Kp-Rag">
                                 <rect key="frame" x="20" y="70" width="137.5" height="21"/>
@@ -33,25 +36,33 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Birthday" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m8a-8j-zFZ">
-                                <rect key="frame" x="20" y="184" width="335" height="34"/>
+                                <rect key="frame" x="20" y="184" width="728" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="K49-qE-FAV"/>
+                                </connections>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="companyIcon" translatesAutoresizingMaskIntoConstraints="NO" id="ad4-Zh-HkX">
-                                <rect key="frame" x="159" y="20" width="57" height="20"/>
+                                <rect key="frame" x="355.5" y="20" width="57" height="20"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="za9-An-87k">
-                                <rect key="frame" x="20" y="627" width="335" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="za9-An-87k">
+                                <rect key="frame" x="20" y="984" width="728" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="mci-zn-Ch8"/>
                                 </constraints>
-                                <state key="normal" title="Show Birthday"/>
+                                <state key="normal" title="Show birthday screen">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="showBirthdayTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="4bA-EP-PGe"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeholder_camera_blue" translatesAutoresizingMaskIntoConstraints="NO" id="xcA-H4-0TH">
-                                <rect key="frame" x="52.5" y="248" width="270" height="270"/>
+                                <rect key="frame" x="249" y="248" width="270" height="270"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ejM-N5-FRW">
-                                <rect key="frame" x="169.5" y="528" width="36" height="36"/>
+                                <rect key="frame" x="366" y="528" width="36" height="36"/>
                                 <state key="normal" backgroundImage="Camera_icon_blue"/>
                             </button>
                         </subviews>
@@ -82,10 +93,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="birhdayTextField" destination="m8a-8j-zFZ" id="8hx-Ag-BCB"/>
+                        <outlet property="cameraButton" destination="ejM-N5-FRW" id="P3N-Ft-IQ6"/>
+                        <outlet property="imagePhotoView" destination="xcA-H4-0TH" id="jG6-pU-cYm"/>
+                        <outlet property="nameTextField" destination="ZIl-dE-lGH" id="GMR-Cq-QQ8"/>
+                        <outlet property="showBirtdayButton" destination="za9-An-87k" id="Re1-gu-WN3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="137.18140929535232"/>
+            <point key="canvasLocation" x="-158" y="146"/>
         </scene>
     </scenes>
     <resources>

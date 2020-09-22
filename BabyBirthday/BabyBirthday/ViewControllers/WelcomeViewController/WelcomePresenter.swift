@@ -6,8 +6,20 @@
 //  Copyright © 2020 Nikolay. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 final class WelcomePresenter {
-    weak var view: WelcomeViewController?
+    weak var view: WelcomeViewInput?
+    let currentPresentationType = PresentationType.randomCase()
+    
+}
+
+extension WelcomePresenter: WelcomeViewOutput {
+    func didTapShowBirthdayWith(name: String, birthday: String, photo: UIImage?) {
+        
+    }
+    
+    func viewDidLoad() {
+        view?.configWithPresentation(type: currentPresentationType)
+    }
 }

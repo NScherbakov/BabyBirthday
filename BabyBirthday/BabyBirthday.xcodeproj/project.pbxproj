@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		95DE32BA251A710F00B0406D /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DE32B9251A710F00B0406D /* StorageService.swift */; };
+		95DE32BD251A8A8D00B0406D /* PresentationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DE32BC251A8A8D00B0406D /* PresentationType.swift */; };
+		95DE32BF251A8DE700B0406D /* WelcomeProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DE32BE251A8DE700B0406D /* WelcomeProtocols.swift */; };
+		95DE32C2251A97FE00B0406D /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DE32C1251A97FE00B0406D /* DatePicker.swift */; };
+		95DE32C4251A9BA300B0406D /* CommonToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DE32C3251A9BA300B0406D /* CommonToolbar.swift */; };
 		95F2D6D5251A6BFA0049FFC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F2D6D4251A6BFA0049FFC9 /* AppDelegate.swift */; };
 		95F2D6D7251A6BFA0049FFC9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F2D6D6251A6BFA0049FFC9 /* SceneDelegate.swift */; };
 		95F2D6D9251A6BFA0049FFC9 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F2D6D8251A6BFA0049FFC9 /* WelcomeViewController.swift */; };
@@ -22,6 +26,10 @@
 
 /* Begin PBXFileReference section */
 		95DE32B9251A710F00B0406D /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		95DE32BC251A8A8D00B0406D /* PresentationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationType.swift; sourceTree = "<group>"; };
+		95DE32BE251A8DE700B0406D /* WelcomeProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeProtocols.swift; sourceTree = "<group>"; };
+		95DE32C1251A97FE00B0406D /* DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
+		95DE32C3251A9BA300B0406D /* CommonToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonToolbar.swift; sourceTree = "<group>"; };
 		95F2D6D1251A6BFA0049FFC9 /* BabyBirthday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BabyBirthday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95F2D6D4251A6BFA0049FFC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95F2D6D6251A6BFA0049FFC9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +63,23 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		95DE32BB251A8A7300B0406D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				95DE32BC251A8A8D00B0406D /* PresentationType.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		95DE32C0251A97F100B0406D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				95DE32C1251A97FE00B0406D /* DatePicker.swift */,
+				95DE32C3251A9BA300B0406D /* CommonToolbar.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		95F2D6C8251A6BFA0049FFC9 = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +99,8 @@
 		95F2D6D3251A6BFA0049FFC9 /* BabyBirthday */ = {
 			isa = PBXGroup;
 			children = (
+				95DE32C0251A97F100B0406D /* Views */,
+				95DE32BB251A8A7300B0406D /* Helpers */,
 				95DE32B8251A70FE00B0406D /* Services */,
 				95F2D6F0251A6DF00049FFC9 /* Extensions */,
 				95F2D6EB251A6D3B0049FFC9 /* Flows */,
@@ -107,8 +134,9 @@
 			isa = PBXGroup;
 			children = (
 				95F2D6D8251A6BFA0049FFC9 /* WelcomeViewController.swift */,
-				95F2D6EE251A6D8C0049FFC9 /* WelcomeRouter.swift */,
 				95F2D6F3251A6EB80049FFC9 /* WelcomePresenter.swift */,
+				95F2D6EE251A6D8C0049FFC9 /* WelcomeRouter.swift */,
+				95DE32BE251A8DE700B0406D /* WelcomeProtocols.swift */,
 				95F2D6DA251A6BFA0049FFC9 /* WelcomeViewController.storyboard */,
 			);
 			path = WelcomeViewController;
@@ -202,12 +230,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				95F2D6ED251A6D580049FFC9 /* AppCoordinator.swift in Sources */,
+				95DE32BD251A8A8D00B0406D /* PresentationType.swift in Sources */,
+				95DE32BF251A8DE700B0406D /* WelcomeProtocols.swift in Sources */,
 				95F2D6D9251A6BFA0049FFC9 /* WelcomeViewController.swift in Sources */,
 				95F2D6F4251A6EB80049FFC9 /* WelcomePresenter.swift in Sources */,
 				95F2D6D5251A6BFA0049FFC9 /* AppDelegate.swift in Sources */,
 				95F2D6EF251A6D8C0049FFC9 /* WelcomeRouter.swift in Sources */,
+				95DE32C2251A97FE00B0406D /* DatePicker.swift in Sources */,
 				95DE32BA251A710F00B0406D /* StorageService.swift in Sources */,
 				95F2D6F2251A6E000049FFC9 /* Storyboard.swift in Sources */,
+				95DE32C4251A9BA300B0406D /* CommonToolbar.swift in Sources */,
 				95F2D6D7251A6BFA0049FFC9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
