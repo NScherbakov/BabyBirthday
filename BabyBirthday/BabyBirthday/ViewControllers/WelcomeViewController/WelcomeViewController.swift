@@ -21,6 +21,7 @@ class WelcomeViewController: UIViewController {
     // MARK: - Variables
     
     var presenter: WelcomeViewOutput?
+    private var imagePicker: ImagePicker?
     
     // MARK: - Override
     
@@ -29,6 +30,10 @@ class WelcomeViewController: UIViewController {
         presenter?.viewDidLoad()
         configTextFields()
         configButton()
+        
+        DispatchQueue.main.async {
+            
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,6 +64,11 @@ extension WelcomeViewController {
             
         }
     }
+    
+    @IBAction func makePhotoTapped(button: UIButton) {
+        imagePicker = ImagePicker(presentationController: self, delegate: self)
+        imagePicker?.present(from: self.showBirtdayButton)
+    }
 }
 
 // MARK: - Private
@@ -68,7 +78,7 @@ private extension WelcomeViewController {
         nameTextField.addTarget(self, action: #selector(didChangeText(textField:)), for: .editingChanged)
         
         let commonToolbar = CommonToolbar()
-//        commonToolbar.toolbarDelegate = self
+        commonToolbar.toolbarDelegate = self
         commonToolbar.update()
         
         birhdayTextField.inputView = DatePicker().datePicker
@@ -118,6 +128,26 @@ extension WelcomeViewController: UITextFieldDelegate {
         }
         
         return true
+    }
+}
+
+// MARK: - ImagePickerDelegate
+
+extension WelcomeViewController: ImagePickerDelegate {
+    func didSelect(image: UIImage?) {
+        imagePhotoView.image = image
+    }
+}
+
+// MARK: - CommonToolbarDelegate
+
+extension WelcomeViewController: CommonToolbarDelegate {
+    func commonTooldarCancelTapped(_ view: CommonToolbar) {
+        view.endEditing(true)
+    }
+    
+    func commonTooldarDoneTapped(_ view: CommonToolbar) {
+        view.endEditing(true)
     }
 }
 

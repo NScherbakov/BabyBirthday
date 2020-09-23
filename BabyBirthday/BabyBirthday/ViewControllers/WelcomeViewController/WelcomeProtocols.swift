@@ -11,6 +11,7 @@ import UIKit
 protocol WelcomeViewOutput: class {
     func viewDidLoad()
     func didTapShowBirthdayWith(name: String, birthday: String, photo: UIImage?)
+    func didSelect(photo: UIImage?)
 }
 
 protocol WelcomeViewInput: class {

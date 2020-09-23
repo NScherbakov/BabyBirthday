@@ -19,7 +19,7 @@ final class WelcomeRouter {
 
     func build() -> WelcomeViewController {
         let viewController = WelcomeViewController.storyboardViewController() as WelcomeViewController
-        let presenter = WelcomePresenter()
+        let presenter = WelcomePresenter(router: self)
 
         viewController.presenter = presenter
         presenter.view = viewController

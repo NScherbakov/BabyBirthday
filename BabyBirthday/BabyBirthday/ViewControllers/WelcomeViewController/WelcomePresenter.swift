@@ -10,8 +10,17 @@ import UIKit
 
 final class WelcomePresenter {
     weak var view: WelcomeViewInput?
-    let currentPresentationType = PresentationType.randomCase()
+        
+    // MARK: - Private
     
+    private let currentPresentationType = PresentationType.randomCase()
+    private let router: WelcomeRouter!
+    
+    // MARK: - Init
+    
+    init(router: WelcomeRouter) {
+        self.router = router
+    }
 }
 
 extension WelcomePresenter: WelcomeViewOutput {
@@ -21,5 +30,9 @@ extension WelcomePresenter: WelcomeViewOutput {
     
     func viewDidLoad() {
         view?.configWithPresentation(type: currentPresentationType)
+    }
+    
+    func didSelect(photo: UIImage?) {
+        
     }
 }
