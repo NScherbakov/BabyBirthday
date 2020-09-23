@@ -12,14 +12,25 @@ final class BirthdayViewController: UIViewController {
     
     // MARK: - Outlets
     
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    
     // MARK: - Variables
     
     var presenter: BirthdayViewOutput?
     
+    // MARK: - Override
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        presenter?.viewDidLoad()
+    }
 }
 
 // MARK: - BirthdayViewInput
 
 extension BirthdayViewController: BirthdayViewInput {
-    
+    func configWithPresentation(type: PresentationType) {
+        view.backgroundColor = type.color
+        backgroundImageView.image = type.screenImage
+    }
 }

@@ -11,11 +11,18 @@ import UIKit
 final class BirthdayPresenter {
     weak var view: BirthdayViewInput?
     
+    // MARK: - Private
+    
+    private let currentPresentationType = PresentationType.randomCase()
+    private let router: BirthdayRouter!
+    
     init(router: BirthdayRouter) {
-//           self.router = router
+        self.router = router
     }
 }
 
 extension BirthdayPresenter: BirthdayViewOutput {
-    
+    func viewDidLoad() {
+        view?.configWithPresentation(type: currentPresentationType)
+    }
 }

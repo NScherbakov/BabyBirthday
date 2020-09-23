@@ -9,7 +9,9 @@
 import Foundation
 
 protocol BirthdayViewOutput: class {
+    func viewDidLoad()
 }
 
 protocol BirthdayViewInput: class {
+    func configWithPresentation(type: PresentationType)
 }

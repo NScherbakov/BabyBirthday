@@ -46,6 +46,17 @@ enum PresentationType: CaseIterable {
         }
     }
     
+    var screenImage: UIImage? {
+        switch self {
+        case .fox:
+            return UIImage(named: "iOS_Fox")
+        case .bird:
+            return UIImage(named: "iOS_Pelican")
+        case .elephant:
+            return UIImage(named: "iOS_elephant")
+        }
+    }
+    
     static func randomCase() -> PresentationType {
         return PresentationType.allCases[Int(arc4random_uniform(UInt32(PresentationType.allCases.count)))]
     }

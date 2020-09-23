@@ -29,6 +29,7 @@ extension AppCoordinator: WelcomeRouterDelegate {
     func showBirthday() {
         let router = BirthdayRouter(coordinator: self)
         let viewController = router.build()
+        viewController.modalPresentationStyle = .fullScreen
         navigation.present(viewController, animated: true)
     }
 }
