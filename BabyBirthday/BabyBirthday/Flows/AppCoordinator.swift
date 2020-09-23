@@ -25,5 +25,13 @@ final class AppCoordinator {
     }
 }
 
-extension AppCoordinator: WelcomeRouterDelegate {}
+extension AppCoordinator: WelcomeRouterDelegate {
+    func showBirthday() {
+        let router = BirthdayRouter(coordinator: self)
+        let viewController = router.build()
+        navigation.present(viewController, animated: true)
+    }
+}
+
+extension AppCoordinator: BirthdayRouterDelegate {}
 

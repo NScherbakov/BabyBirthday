@@ -24,6 +24,11 @@
 		95F2D6F4251A6EB80049FFC9 /* WelcomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F2D6F3251A6EB80049FFC9 /* WelcomePresenter.swift */; };
 		95FB314F251BAF9E00B2BBDC /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FB314E251BAF9E00B2BBDC /* ImagePicker.swift */; };
 		95FB3151251BC97300B2BBDC /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FB3150251BC97300B2BBDC /* Date.swift */; };
+		95FB3154251BF32200B2BBDC /* BirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FB3153251BF32100B2BBDC /* BirthdayViewController.swift */; };
+		95FB3156251BF32900B2BBDC /* BirthdayViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95FB3155251BF32900B2BBDC /* BirthdayViewController.storyboard */; };
+		95FB3158251BF36500B2BBDC /* BirthdayProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FB3157251BF36500B2BBDC /* BirthdayProtocols.swift */; };
+		95FB315A251BF38700B2BBDC /* BirthdayPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FB3159251BF38700B2BBDC /* BirthdayPresenter.swift */; };
+		95FB315C251BF41800B2BBDC /* BirthdayRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FB315B251BF41800B2BBDC /* BirthdayRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +51,11 @@
 		95F2D6F3251A6EB80049FFC9 /* WelcomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePresenter.swift; sourceTree = "<group>"; };
 		95FB314E251BAF9E00B2BBDC /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		95FB3150251BC97300B2BBDC /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		95FB3153251BF32100B2BBDC /* BirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayViewController.swift; sourceTree = "<group>"; };
+		95FB3155251BF32900B2BBDC /* BirthdayViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BirthdayViewController.storyboard; sourceTree = "<group>"; };
+		95FB3157251BF36500B2BBDC /* BirthdayProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayProtocols.swift; sourceTree = "<group>"; };
+		95FB3159251BF38700B2BBDC /* BirthdayPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayPresenter.swift; sourceTree = "<group>"; };
+		95FB315B251BF41800B2BBDC /* BirthdayRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +140,7 @@
 		95F2D6E9251A6CAF0049FFC9 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				95FB3152251BF30D00B2BBDC /* BirthdayViewController */,
 				95F2D6EA251A6CC60049FFC9 /* WelcomeViewController */,
 			);
 			path = ViewControllers;
@@ -162,6 +173,18 @@
 				95FB3150251BC97300B2BBDC /* Date.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		95FB3152251BF30D00B2BBDC /* BirthdayViewController */ = {
+			isa = PBXGroup;
+			children = (
+				95FB3153251BF32100B2BBDC /* BirthdayViewController.swift */,
+				95FB3159251BF38700B2BBDC /* BirthdayPresenter.swift */,
+				95FB315B251BF41800B2BBDC /* BirthdayRouter.swift */,
+				95FB3157251BF36500B2BBDC /* BirthdayProtocols.swift */,
+				95FB3155251BF32900B2BBDC /* BirthdayViewController.storyboard */,
+			);
+			path = BirthdayViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,6 +247,7 @@
 			files = (
 				95F2D6E1251A6BFB0049FFC9 /* LaunchScreen.storyboard in Resources */,
 				95F2D6DE251A6BFB0049FFC9 /* Assets.xcassets in Resources */,
+				95FB3156251BF32900B2BBDC /* BirthdayViewController.storyboard in Resources */,
 				95F2D6DC251A6BFA0049FFC9 /* WelcomeViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,14 +264,18 @@
 				95DE32BD251A8A8D00B0406D /* PresentationType.swift in Sources */,
 				95DE32BF251A8DE700B0406D /* WelcomeProtocols.swift in Sources */,
 				95F2D6D9251A6BFA0049FFC9 /* WelcomeViewController.swift in Sources */,
+				95FB3154251BF32200B2BBDC /* BirthdayViewController.swift in Sources */,
 				95F2D6F4251A6EB80049FFC9 /* WelcomePresenter.swift in Sources */,
 				95F2D6D5251A6BFA0049FFC9 /* AppDelegate.swift in Sources */,
 				95F2D6EF251A6D8C0049FFC9 /* WelcomeRouter.swift in Sources */,
+				95FB315C251BF41800B2BBDC /* BirthdayRouter.swift in Sources */,
 				95DE32C2251A97FE00B0406D /* DatePicker.swift in Sources */,
 				95FB3151251BC97300B2BBDC /* Date.swift in Sources */,
 				95DE32BA251A710F00B0406D /* StorageService.swift in Sources */,
 				95F2D6F2251A6E000049FFC9 /* Storyboard.swift in Sources */,
 				95DE32C4251A9BA300B0406D /* CommonToolbar.swift in Sources */,
+				95FB315A251BF38700B2BBDC /* BirthdayPresenter.swift in Sources */,
+				95FB3158251BF36500B2BBDC /* BirthdayProtocols.swift in Sources */,
 				95F2D6D7251A6BFA0049FFC9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

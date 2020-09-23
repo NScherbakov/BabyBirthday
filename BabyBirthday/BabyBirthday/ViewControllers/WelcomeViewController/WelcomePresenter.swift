@@ -29,9 +29,11 @@ final class WelcomePresenter {
     }
 }
 
+// MARK: - WelcomeViewOutput
+
 extension WelcomePresenter: WelcomeViewOutput {
-    func didTapShowBirthdayWith() {
-        
+    func didTapShowBirthday() {
+        router.showBirthday()
     }
     
     func viewDidLoad() {
