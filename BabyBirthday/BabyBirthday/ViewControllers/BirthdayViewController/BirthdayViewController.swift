@@ -12,7 +12,10 @@ final class BirthdayViewController: UIViewController {
     
     // MARK: - Outlets
     
+    @IBOutlet weak var babeNameLabel: UILabel!
+    @IBOutlet weak var babeAgeLabel: UILabel!
     @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var numberImageView: UIImageView!
     
     // MARK: - Variables
     
@@ -23,6 +26,25 @@ final class BirthdayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewDidLoad()
+        configNumberImageView()
+        configLabels()
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+}
+
+// MARK: - Private
+
+private extension BirthdayViewController {
+    func configNumberImageView() {
+        numberImageView.image = presenter?.imageForNumberImageView()
+    }
+    
+    func configLabels() {
+        babeNameLabel.text = presenter?.babyName()
+        babeAgeLabel.text = presenter?.babyAge()
     }
 }
 

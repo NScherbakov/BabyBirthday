@@ -87,6 +87,7 @@ private extension WelcomeViewController {
         datePicker = DatePicker(minDate: minDate,
                                 maxDate: maxDate,
                                 currentDate: currentDate) { [weak self] date in
+                                    
             guard let strongSelf = self else { return }
             strongSelf.configBirthdayTextFieldWith(date: date)
         }
@@ -125,6 +126,11 @@ private extension WelcomeViewController {
 // MARK: - WelcomeViewInput
 
 extension WelcomeViewController: WelcomeViewInput {
+    func defaultPhotoImage() -> UIImage? {
+        
+        return nil
+    }
+    
     func configWithPresentation(type: PresentationType) {
         view.backgroundColor = type.color
         cameraButton.setBackgroundImage(type.iconCamera, for: .normal)

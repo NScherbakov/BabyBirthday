@@ -26,4 +26,5 @@ protocol WelcomeViewOutput: class {
 
 protocol WelcomeViewInput: class {
     func configWithPresentation(type: PresentationType)
+    func defaultPhotoImage() -> UIImage?
 }

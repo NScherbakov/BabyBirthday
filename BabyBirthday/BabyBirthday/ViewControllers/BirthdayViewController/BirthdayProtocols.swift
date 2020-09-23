@@ -6,10 +6,13 @@
 //  Copyright © 2020 Nikolay. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol BirthdayViewOutput: class {
     func viewDidLoad()
+    func imageForNumberImageView() -> UIImage?
+    func babyName() -> String?
+    func babyAge() -> String?
 }
 
 protocol BirthdayViewInput: class {

@@ -14,7 +14,7 @@ final class WelcomePresenter {
         
     // MARK: - Private
     
-    private let maxYearsOld = 10
+    private let maxYearsOld = 12
     private let currentPresentationType = PresentationType.randomCase()
     private let router: WelcomeRouter!
     
