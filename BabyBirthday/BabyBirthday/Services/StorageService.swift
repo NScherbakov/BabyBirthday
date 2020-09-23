@@ -12,15 +12,33 @@ import Foundation
 
 enum SettingsKey: String {
     case babyName
+    case babyBirthday
+    case babyPhoto
 }
 
 class StorageService {
     
-    static func storageBaby(name: String) {
+    static func storageBaby(name: String?) {
         UserDefaults.standard.set(name, forKey: SettingsKey.babyName.rawValue)
     }
     
     static func readBabyName() -> String? {
         return UserDefaults.standard.string(forKey: SettingsKey.babyName.rawValue)
+    }
+    
+    static func storageBaby(birthday: Date?) {
+        UserDefaults.standard.set(birthday, forKey: SettingsKey.babyBirthday.rawValue)
+    }
+    
+    static func readBabyBirthday() -> Date? {
+        return UserDefaults.standard.value(forKey: SettingsKey.babyBirthday.rawValue) as? Date
+    }
+    
+    static func storageBabyPhoto(url: String?) {
+        UserDefaults.standard.set(url, forKey: SettingsKey.babyPhoto.rawValue)
+    }
+    
+    static func readBabyPhotoUrl() -> String? {
+        return UserDefaults.standard.string(forKey: SettingsKey.babyPhoto.rawValue)
     }
 }

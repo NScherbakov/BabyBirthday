@@ -15,17 +15,19 @@ final class DatePicker: NSObject {
     
     init(minDate: Date? = .none,
          maxDate: Date? = .none,
+         currentDate: Date? = .none,
          completion: ((Date?) -> Void)? = .none) {
         self.completion = completion
         super.init()
-        self.setupWith(maxDate: maxDate, minDate: minDate)
+        self.setupWith(maxDate: maxDate, minDate: minDate, currentDate: currentDate)
     }
 }
 
 // MARK: - Private
 
 private extension DatePicker {
-    func setupWith(maxDate: Date?, minDate: Date?) {
+    func setupWith(maxDate: Date?, minDate: Date?, currentDate: Date?) {
+        datePicker.date = currentDate ?? Date()
         datePicker.minimumDate = minDate
         datePicker.maximumDate = maxDate
         datePicker.datePickerMode = .date
@@ -37,6 +39,6 @@ private extension DatePicker {
 
 extension DatePicker {
     @objc func datePickerChoosedDate() {
-        
+        completion?(datePicker.date)
     }
 }

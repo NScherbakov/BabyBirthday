@@ -22,6 +22,7 @@ class WelcomeViewController: UIViewController {
     
     var presenter: WelcomeViewOutput?
     private var imagePicker: ImagePicker?
+    private var datePicker: DatePicker?
     
     // MARK: - Override
     
@@ -30,10 +31,6 @@ class WelcomeViewController: UIViewController {
         presenter?.viewDidLoad()
         configTextFields()
         configButton()
-        
-        DispatchQueue.main.async {
-            
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,13 +52,13 @@ extension WelcomeViewController {
         }
         
         if nameText.isEmpty && birhdayText.isEmpty {
-            let alert = UIAlertController(title: "Sorry", message: "Fill all fields",
+            let alert = UIAlertController(title: "Sorry", message: "Fill all fields please",
                                           preferredStyle: UIAlertController.Style.alert)
 
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in }))
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default))
             present(alert, animated: true, completion: nil)
         } else {
-            
+            presenter?.didTapShowBirthday()
         }
     }
     
@@ -75,14 +72,30 @@ extension WelcomeViewController {
 
 private extension WelcomeViewController {
     func configTextFields() {
+        guard let presenter = presenter else { return }
+        
         nameTextField.addTarget(self, action: #selector(didChangeText(textField:)), for: .editingChanged)
         
         let commonToolbar = CommonToolbar()
         commonToolbar.toolbarDelegate = self
         commonToolbar.update()
         
-        birhdayTextField.inputView = DatePicker().datePicker
+        let minDate = presenter.minDateForDatePicker()
+        let maxDate = presenter.maxDateForDatePicker()
+        let currentDate = presenter.babyBirthday()
+        
+        datePicker = DatePicker(minDate: minDate,
+                                maxDate: maxDate,
+                                currentDate: currentDate) { [weak self] date in
+            guard let strongSelf = self else { return }
+            strongSelf.configBirthdayTextFieldWith(date: date)
+        }
+   
+        birhdayTextField.inputView = datePicker!.datePicker
         birhdayTextField.inputAccessoryView = commonToolbar
+        
+        birhdayTextField.text = presenter.babyBirthday()?.babyBirthdayString()
+        nameTextField.text = presenter.babyName()
     }
     
     func configButton() {
@@ -93,6 +106,20 @@ private extension WelcomeViewController {
         let isEnabled = !nameText.isEmpty && !birhdayText.isEmpty
         showBirtdayButton.alpha = isEnabled ? 1 : 0.2
     }
+    
+    func configImageViewWith(type: PresentationType) {
+        if let image = presenter?.babyPhoto() {
+            imagePhotoView.image = image
+        } else {
+            imagePhotoView.image = type.iconPlacehoderCamera
+        }
+    }
+    
+    func configBirthdayTextFieldWith(date: Date?) {
+        presenter?.changed(birthday: date)
+        birhdayTextField.text = date?.babyBirthdayString()
+        configButton()
+    }
 }
 
 // MARK: - WelcomeViewInput
@@ -101,19 +128,7 @@ extension WelcomeViewController: WelcomeViewInput {
     func configWithPresentation(type: PresentationType) {
         view.backgroundColor = type.color
         cameraButton.setBackgroundImage(type.iconCamera, for: .normal)
-        imagePhotoView.image = type.iconPlacehoderCamera
-    }
-    
-    func updateNameTextField(text: String?) {
-        nameTextField.text = text
-    }
-    
-    func updateBirthdayTextField(text: String?) {
-        birhdayTextField.text = text
-    }
-    
-    func update(photo: UIImage?) {
-        imagePhotoView.image = photo
+        configImageViewWith(type: type)
     }
 }
 
@@ -129,25 +144,44 @@ extension WelcomeViewController: UITextFieldDelegate {
         
         return true
     }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == nameTextField {
+            presenter?.changed(name: nameTextField.text)
+        }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == birhdayTextField {
+            return false
+        }
+        
+        return true
+    }
 }
 
 // MARK: - ImagePickerDelegate
 
 extension WelcomeViewController: ImagePickerDelegate {
-    func didSelect(image: UIImage?) {
+    func didSelect(image: UIImage?, imageUrl: NSURL?) {
         imagePhotoView.image = image
+        presenter?.didSelect(photo: image, by: imageUrl)
     }
 }
 
 // MARK: - CommonToolbarDelegate
 
 extension WelcomeViewController: CommonToolbarDelegate {
-    func commonTooldarCancelTapped(_ view: CommonToolbar) {
-        view.endEditing(true)
+    func commonToolbarCancelTapped(_ view: CommonToolbar) {
+        birhdayTextField.text = ""
+        self.view.endEditing(true)
+        configButton()
     }
     
-    func commonTooldarDoneTapped(_ view: CommonToolbar) {
-        view.endEditing(true)
+    func commonToolbarDoneTapped(_ view: CommonToolbar) {
+        if birhdayTextField.text?.isEmpty == true {
+            configBirthdayTextFieldWith(date: datePicker?.datePicker.date)
+        }
+        self.view.endEditing(true)
     }
 }
-

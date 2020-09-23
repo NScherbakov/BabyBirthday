@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ImagePickerDelegate: class {
-    func didSelect(image: UIImage?)
+    func didSelect(image: UIImage?, imageUrl: NSURL?)
 }
 
 class ImagePicker: NSObject {
@@ -34,11 +34,11 @@ class ImagePicker: NSObject {
         
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        if let action = self.action(for: .camera, title: "Take a photo") {
+        if let action = action(for: .camera, title: "Take a photo") {
             alertController.addAction(action)
         }
         
-        if let action = self.action(for: .photoLibrary, title: "Select from gallery") {
+        if let action = action(for: .photoLibrary, title: "Select from gallery") {
             alertController.addAction(action)
         }
         
@@ -69,10 +69,12 @@ private extension ImagePicker {
         }
     }
     
-    private func pickerController(_ controller: UIImagePickerController, didSelect image: UIImage?) {
+    private func pickerController(_ controller: UIImagePickerController,
+                                  didSelect image: UIImage?,
+                                  url: NSURL?) {
         controller.dismiss(animated: true, completion: nil)
         
-        delegate?.didSelect(image: image)
+        delegate?.didSelect(image: image, imageUrl: url)
     }
 }
 
@@ -81,15 +83,16 @@ private extension ImagePicker {
 extension ImagePicker: UIImagePickerControllerDelegate {
     
     public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        pickerController(picker, didSelect: nil)
+        pickerController(picker, didSelect: nil, url: nil)
     }
 
     public func imagePickerController(_ picker: UIImagePickerController,
                                       didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        guard let image = info[.editedImage] as? UIImage else {
-            return pickerController(picker, didSelect: nil)
+        guard let image = info[.editedImage] as? UIImage,
+            let url = info[.imageURL] as? NSURL else {
+            return pickerController(picker, didSelect: nil, url: nil)
         }
-        pickerController(picker, didSelect: image)
+        pickerController(picker, didSelect: image, url: url)
     }
 }
 

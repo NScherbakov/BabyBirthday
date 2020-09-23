@@ -10,13 +10,20 @@ import UIKit
 
 protocol WelcomeViewOutput: class {
     func viewDidLoad()
-    func didTapShowBirthdayWith(name: String, birthday: String, photo: UIImage?)
-    func didSelect(photo: UIImage?)
+    func didTapShowBirthday()
+    
+    func maxDateForDatePicker() -> Date
+    func minDateForDatePicker() -> Date
+    
+    func changed(name: String?)
+    func changed(birthday: Date?)
+    func didSelect(photo: UIImage?, by: NSURL?)
+    
+    func babyName() -> String?
+    func babyBirthday() -> Date?
+    func babyPhoto() -> UIImage?
 }
 
 protocol WelcomeViewInput: class {
     func configWithPresentation(type: PresentationType)
-    func updateNameTextField(text: String?)
-    func updateBirthdayTextField(text: String?)
-    func update(photo: UIImage?)
 }

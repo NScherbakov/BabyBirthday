@@ -23,6 +23,7 @@
 		95F2D6F2251A6E000049FFC9 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F2D6F1251A6E000049FFC9 /* Storyboard.swift */; };
 		95F2D6F4251A6EB80049FFC9 /* WelcomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F2D6F3251A6EB80049FFC9 /* WelcomePresenter.swift */; };
 		95FB314F251BAF9E00B2BBDC /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FB314E251BAF9E00B2BBDC /* ImagePicker.swift */; };
+		95FB3151251BC97300B2BBDC /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FB3150251BC97300B2BBDC /* Date.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		95F2D6F1251A6E000049FFC9 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		95F2D6F3251A6EB80049FFC9 /* WelcomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePresenter.swift; sourceTree = "<group>"; };
 		95FB314E251BAF9E00B2BBDC /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		95FB3150251BC97300B2BBDC /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				95F2D6F1251A6E000049FFC9 /* Storyboard.swift */,
+				95FB3150251BC97300B2BBDC /* Date.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 				95F2D6D5251A6BFA0049FFC9 /* AppDelegate.swift in Sources */,
 				95F2D6EF251A6D8C0049FFC9 /* WelcomeRouter.swift in Sources */,
 				95DE32C2251A97FE00B0406D /* DatePicker.swift in Sources */,
+				95FB3151251BC97300B2BBDC /* Date.swift in Sources */,
 				95DE32BA251A710F00B0406D /* StorageService.swift in Sources */,
 				95F2D6F2251A6E000049FFC9 /* Storyboard.swift in Sources */,
 				95DE32C4251A9BA300B0406D /* CommonToolbar.swift in Sources */,
