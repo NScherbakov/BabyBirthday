@@ -112,4 +112,16 @@ extension BirthdayPresenter: BirthdayViewOutput {
         
         StorageService.storageBabyPhoto(url: url.lastPathComponent!)
     }
+    
+    func shareTapped(in content: UIView) {
+        view?.elementsForScreenshoot(hide: true)
+        
+        UIGraphicsBeginImageContext(content.frame.size)
+        content.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        view?.elementsForScreenshoot(hide: false)
+        view?.showShare(image: image)
+    }
 }

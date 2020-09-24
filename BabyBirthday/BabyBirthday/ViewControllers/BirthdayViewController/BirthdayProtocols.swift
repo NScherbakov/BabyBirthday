@@ -16,9 +16,12 @@ protocol BirthdayViewOutput: class {
     func babyAge() -> String?
     func closeTapped()
     func didSelect(photo: UIImage?, by url: NSURL?)
+    func shareTapped(in content: UIView)
 }
 
 protocol BirthdayViewInput: class {
     func configWithPresentation(type: PresentationType)
     func showBottomAppLogo(at position: PresentationType.Position)
+    func elementsForScreenshoot(hide: Bool)
+    func showShare(image: UIImage?)
 }

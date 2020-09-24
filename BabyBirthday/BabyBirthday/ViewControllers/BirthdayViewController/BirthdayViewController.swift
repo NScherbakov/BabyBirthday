@@ -19,12 +19,14 @@ final class BirthdayViewController: UIViewController {
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var logoStackView: UIStackView!
     @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var photoButton: UIButton!
     
     // MARK: - Variables
     
     var presenter: BirthdayViewOutput?
     private var imagePicker: ImagePicker?
+    private var activityViewController: UIActivityViewController?
     
     // MARK: - Override
     
@@ -52,6 +54,10 @@ extension BirthdayViewController {
    @IBAction func makePhotoTapped(button: UIButton) {
         imagePicker = ImagePicker(presentationController: self, delegate: self)
         imagePicker?.present(from: button)
+    }
+    
+    @IBAction func shareTapped() {
+        presenter?.shareTapped(in: view)
     }
 }
 
@@ -102,6 +108,22 @@ extension BirthdayViewController: BirthdayViewInput {
         case .center:
             logoStackView.alignment = .center
         }
+    }
+    
+    func elementsForScreenshoot(hide: Bool) {
+        photoButton.isHidden = hide
+        shareButton.isHidden = hide
+        closeButton.isHidden = hide
+    }
+    
+    func showShare(image: UIImage?) {
+        guard let image = image else { return }
+        
+        activityViewController = UIActivityViewController(activityItems: ["Look!", image],
+                                                              applicationActivities: [])
+   
+        activityViewController!.popoverPresentationController?.sourceView = self.view
+        present(activityViewController!, animated: true, completion: nil)
     }
 }
 

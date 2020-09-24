@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="7" translatesAutoresizingMaskIntoConstraints="NO" id="DZi-wJ-KhH">
-                                <rect key="frame" x="154.5" y="106" width="66" height="89"/>
+                                <rect key="frame" x="121.5" y="106" width="132" height="178"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IS BLA BLA BLA" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQf-he-UpW">
                                 <rect key="frame" x="80" y="67" width="215" height="23"/>
@@ -35,14 +35,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Left swirls" translatesAutoresizingMaskIntoConstraints="NO" id="re6-pP-niI">
-                                <rect key="frame" x="84.5" y="132" width="52" height="46"/>
+                                <rect key="frame" x="51.5" y="132" width="52" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="gqM-kl-ptB"/>
                                     <constraint firstAttribute="width" constant="52" id="o52-2v-GOw"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nob-E1-1Ok">
-                                <rect key="frame" x="162" y="210" width="51.5" height="19"/>
+                                <rect key="frame" x="162" y="299" width="51.5" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="cnt-IZ-PWV"/>
                                 </constraints>
@@ -62,14 +62,14 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Right swirls" translatesAutoresizingMaskIntoConstraints="NO" id="QiA-6o-bf1">
-                                <rect key="frame" x="237.5" y="132" width="52" height="46"/>
+                                <rect key="frame" x="270.5" y="132" width="52" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="52" id="azV-af-VIH"/>
                                     <constraint firstAttribute="height" constant="46" id="q9q-fI-IgW"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ph0-tE-Hzg">
-                                <rect key="frame" x="107.49999999999999" y="246" width="160.00000000000003" height="40"/>
+                                <rect key="frame" x="107.5" y="246" width="160" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="160" id="Mjb-pn-ElO"/>
                                     <constraint firstAttribute="height" constant="40" id="Odv-0C-KAJ"/>
@@ -78,6 +78,9 @@
                                 <state key="normal" title="Share the news" image="ic_share_pink_small" backgroundImage="Btn_share">
                                     <color key="titleColor" red="0.92941176470588238" green="0.48627450980392156" blue="0.4823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="shareTapped" destination="kmf-Yi-DZW" eventType="touchUpInside" id="Xha-wE-7Le"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xek-CQ-2nw">
                                 <rect key="frame" x="249" y="336" width="36" height="36"/>
@@ -94,7 +97,7 @@
                                 <rect key="frame" x="20" y="629" width="335" height="22"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="companyIcon" translatesAutoresizingMaskIntoConstraints="NO" id="sBZ-QZ-gSm">
-                                        <rect key="frame" x="139" y="0.0" width="57" height="22"/>
+                                        <rect key="frame" x="110.5" y="0.0" width="114" height="22"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
@@ -137,6 +140,7 @@
                         <outlet property="babeAgeLabel" destination="nob-E1-1Ok" id="1kc-hS-SwP"/>
                         <outlet property="babeNameLabel" destination="LQf-he-UpW" id="7yH-Tj-rMy"/>
                         <outlet property="backgroundImageView" destination="yKU-ZI-eFU" id="Fw1-7g-oFk"/>
+                        <outlet property="closeButton" destination="h5o-6R-cCx" id="brD-1H-dbP"/>
                         <outlet property="logoStackView" destination="Kjg-ke-cAy" id="tAV-Sa-gbJ"/>
                         <outlet property="numberImageView" destination="DZi-wJ-KhH" id="UbG-LL-neQ"/>
                         <outlet property="photoButton" destination="Xek-CQ-2nw" id="Xul-ta-cLl"/>
