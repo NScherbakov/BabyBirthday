@@ -18,4 +18,5 @@ protocol BirthdayViewOutput: class {
 
 protocol BirthdayViewInput: class {
     func configWithPresentation(type: PresentationType)
+    func showBottomAppLogo(at position: PresentationType.Position)
 }

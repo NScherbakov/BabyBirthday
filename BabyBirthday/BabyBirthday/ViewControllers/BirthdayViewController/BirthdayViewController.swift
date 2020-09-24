@@ -16,6 +16,9 @@ final class BirthdayViewController: UIViewController {
     @IBOutlet weak var babeAgeLabel: UILabel!
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var numberImageView: UIImageView!
+    @IBOutlet weak var logoStackView: UIStackView!
+    @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var photoButton: UIButton!
     
     // MARK: - Variables
     
@@ -28,6 +31,7 @@ final class BirthdayViewController: UIViewController {
         presenter?.viewDidLoad()
         configNumberImageView()
         configLabels()
+        configButton()
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -54,13 +58,33 @@ private extension BirthdayViewController {
         babeNameLabel.text = presenter?.babyName()
         babeAgeLabel.text = presenter?.babyAge()
     }
+    
+    func configButton() {
+        shareButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+    }
 }
 
 // MARK: - BirthdayViewInput
 
 extension BirthdayViewController: BirthdayViewInput {
     func configWithPresentation(type: PresentationType) {
-        view.backgroundColor = type.color
         backgroundImageView.image = type.screenImage
+        photoButton.setBackgroundImage(type.iconCamera, for: .normal)
+    }
+    
+    // Workaround for less than iPhone X size
+    // Because this (small) background image doesn't have AppLogo at the bottom
+    // i am not quite sure need i to do it?
+    
+    func showBottomAppLogo(at position: PresentationType.Position) {
+        logoStackView.isHidden = false
+        switch position {
+        case .left:
+            logoStackView.alignment = .leading
+        case .right:
+            logoStackView.alignment = .trailing
+        case .center:
+            logoStackView.alignment = .center
+        }
     }
 }

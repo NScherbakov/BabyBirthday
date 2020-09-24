@@ -13,6 +13,12 @@ enum PresentationType: CaseIterable {
     case bird
     case elephant
     
+    enum Position {
+        case left
+        case center
+        case right
+    }
+    
     var color: UIColor {
         switch self {
         case .fox:
@@ -54,6 +60,17 @@ enum PresentationType: CaseIterable {
             return UIImage(named: "iOS_Pelican")
         case .elephant:
             return UIImage(named: "iOS_elephant")
+        }
+    }
+    
+    var position: Position {
+        switch self {
+        case .fox:
+            return .center
+        case .bird:
+            return .left
+        case .elephant:
+            return .right
         }
     }
     

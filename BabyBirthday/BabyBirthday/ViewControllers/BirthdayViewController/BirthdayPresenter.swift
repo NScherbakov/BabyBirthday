@@ -11,7 +11,7 @@ import UIKit
 final class BirthdayPresenter {
     weak var view: BirthdayViewInput?
     
-    // MARK: - Private
+    // MARK: - Variables
     
     private let currentPresentationType = PresentationType.randomCase()
     private let router: BirthdayRouter!
@@ -21,9 +21,26 @@ final class BirthdayPresenter {
     }
 }
 
+// MARK: - Private
+
+private extension BirthdayPresenter {
+    var hasTopNotch: Bool {
+        if #available(iOS 11.0, tvOS 11.0, *) {
+            return UIApplication.shared.delegate?.window??.safeAreaInsets.top ?? 0 > 20
+        }
+        return false
+    }
+}
+
+// MARK: - BirthdayViewOutput
+
 extension BirthdayPresenter: BirthdayViewOutput {
     func viewDidLoad() {
         view?.configWithPresentation(type: currentPresentationType)
+        
+        if !hasTopNotch {
+            view?.showBottomAppLogo(at: currentPresentationType.position)
+        }
     }
     
     func imageForNumberImageView() -> UIImage? {
