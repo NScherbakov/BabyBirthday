@@ -21,7 +21,6 @@ protocol BirthdayViewOutput: class {
 
 protocol BirthdayViewInput: class {
     func configWithPresentation(type: PresentationType)
-    func showBottomAppLogo(at position: PresentationType.Position)
     func elementsForScreenshoot(hide: Bool)
     func showShare(image: UIImage?)
 }

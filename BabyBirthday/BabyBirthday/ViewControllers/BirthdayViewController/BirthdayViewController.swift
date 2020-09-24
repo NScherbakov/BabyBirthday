@@ -92,15 +92,8 @@ extension BirthdayViewController: BirthdayViewInput {
         backgroundImageView.image = type.screenImage
         photoImageView.image = type.iconPlacehoderCamera
         photoButton.setBackgroundImage(type.iconCamera, for: .normal)
-    }
-    
-    // Workaround for less than iPhone X size
-    // Because this (small) background image doesn't have AppLogo at the bottom
-    // i am not quite sure need i to do it?
-    
-    func showBottomAppLogo(at position: PresentationType.Position) {
-        logoStackView.isHidden = false
-        switch position {
+        
+        switch type.position {
         case .left:
             logoStackView.alignment = .leading
         case .right:
@@ -109,7 +102,7 @@ extension BirthdayViewController: BirthdayViewInput {
             logoStackView.alignment = .center
         }
     }
-    
+   
     func elementsForScreenshoot(hide: Bool) {
         photoButton.isHidden = hide
         shareButton.isHidden = hide

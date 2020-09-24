@@ -37,10 +37,6 @@ private extension BirthdayPresenter {
 extension BirthdayPresenter: BirthdayViewOutput {
     func viewDidLoad() {
         view?.configWithPresentation(type: currentPresentationType)
-        
-        if !hasTopNotch {
-            view?.showBottomAppLogo(at: currentPresentationType.position)
-        }
     }
     
     func imageForNumberImageView() -> UIImage? {

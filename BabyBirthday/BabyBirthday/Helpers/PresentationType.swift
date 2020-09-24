@@ -53,6 +53,20 @@ enum PresentationType: CaseIterable {
     }
     
     var screenImage: UIImage? {
+        
+        // Workaround because 2 diffrent images for big and normal sizes screen
+        
+        if #available(iOS 11.0, tvOS 11.0, *) {
+            switch self {
+            case .fox:
+                return UIImage(named: "fox_iphoneX_fox")
+            case .bird:
+                return UIImage(named: "fox_iphoneX_bird")
+            case .elephant:
+                return UIImage(named: "fox_iphoneX_elephant")
+            }
+        }
+        
         switch self {
         case .fox:
             return UIImage(named: "iOS_Fox")

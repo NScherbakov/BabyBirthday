@@ -93,7 +93,7 @@
                                     <action selector="makePhotoTappedWithButton:" destination="kmf-Yi-DZW" eventType="touchUpInside" id="82e-iC-poq"/>
                                 </connections>
                             </button>
-                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Kjg-ke-cAy">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Kjg-ke-cAy">
                                 <rect key="frame" x="20" y="629" width="335" height="22"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="companyIcon" translatesAutoresizingMaskIntoConstraints="NO" id="sBZ-QZ-gSm">
