@@ -40,6 +40,10 @@ extension WelcomePresenter: WelcomeViewOutput {
         view?.configWithPresentation(type: currentPresentationType)
     }
     
+    func viewWillAppear() {
+        view?.configWithPresentation(type: currentPresentationType)
+    }
+    
     func didSelect(photo: UIImage?, by url: NSURL?) {
         guard let url = url, let photo = photo else { return }
         

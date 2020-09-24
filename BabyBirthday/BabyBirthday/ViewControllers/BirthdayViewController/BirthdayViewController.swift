@@ -16,6 +16,7 @@ final class BirthdayViewController: UIViewController {
     @IBOutlet weak var babeAgeLabel: UILabel!
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var numberImageView: UIImageView!
+    @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var logoStackView: UIStackView!
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var photoButton: UIButton!
@@ -23,6 +24,7 @@ final class BirthdayViewController: UIViewController {
     // MARK: - Variables
     
     var presenter: BirthdayViewOutput?
+    private var imagePicker: ImagePicker?
     
     // MARK: - Override
     
@@ -32,6 +34,7 @@ final class BirthdayViewController: UIViewController {
         configNumberImageView()
         configLabels()
         configButton()
+        configPhotoImageView()
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -44,6 +47,11 @@ final class BirthdayViewController: UIViewController {
 extension BirthdayViewController {
     @IBAction func closeTapped() {
         presenter?.closeTapped()
+    }
+    
+   @IBAction func makePhotoTapped(button: UIButton) {
+        imagePicker = ImagePicker(presentationController: self, delegate: self)
+        imagePicker?.present(from: button)
     }
 }
 
@@ -62,6 +70,13 @@ private extension BirthdayViewController {
     func configButton() {
         shareButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
     }
+    
+    func configPhotoImageView() {
+        photoImageView.layer.cornerRadius = 120
+        if let image = presenter?.photo() {
+            photoImageView.image = image
+        }
+    }
 }
 
 // MARK: - BirthdayViewInput
@@ -69,6 +84,7 @@ private extension BirthdayViewController {
 extension BirthdayViewController: BirthdayViewInput {
     func configWithPresentation(type: PresentationType) {
         backgroundImageView.image = type.screenImage
+        photoImageView.image = type.iconPlacehoderCamera
         photoButton.setBackgroundImage(type.iconCamera, for: .normal)
     }
     
@@ -86,5 +102,14 @@ extension BirthdayViewController: BirthdayViewInput {
         case .center:
             logoStackView.alignment = .center
         }
+    }
+}
+
+// MARK: - ImagePickerDelegate
+
+extension BirthdayViewController: ImagePickerDelegate {
+    func didSelect(image: UIImage?, imageUrl: NSURL?) {
+        photoImageView.image = image
+        presenter?.didSelect(photo: image, by: imageUrl)
     }
 }

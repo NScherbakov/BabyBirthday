@@ -35,6 +35,7 @@ class WelcomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        presenter?.viewWillAppear()
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
@@ -130,11 +131,6 @@ private extension WelcomeViewController {
 // MARK: - WelcomeViewInput
 
 extension WelcomeViewController: WelcomeViewInput {
-    func defaultPhotoImage() -> UIImage? {
-        
-        return nil
-    }
-    
     func configWithPresentation(type: PresentationType) {
         view.backgroundColor = type.color
         cameraButton.setBackgroundImage(type.iconCamera, for: .normal)

@@ -81,11 +81,35 @@ extension BirthdayPresenter: BirthdayViewOutput {
         }
     }
     
-    func defaultPhotoImage() -> UIImage? {
-        return currentPresentationType.iconPlacehoderCamera
-    }
-    
     func closeTapped() {
         router.dismiss()
+    }
+    
+    func photo() -> UIImage? {
+        guard let imageName = StorageService.readBabyPhotoUrl() else { return nil }
+        
+        let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
+        let nsUserDomainMask = FileManager.SearchPathDomainMask.userDomainMask
+        let paths = NSSearchPathForDirectoriesInDomains(nsDocumentDirectory, nsUserDomainMask, true)
+        
+        if let dirPath = paths.first {
+            let imageURL = URL(fileURLWithPath: dirPath).appendingPathComponent(imageName)
+            return UIImage(contentsOfFile: imageURL.path)
+        }
+        
+        return nil
+    }
+    
+    func didSelect(photo: UIImage?, by url: NSURL?) {
+        guard let url = url, let photo = photo else { return }
+        
+        let imageName = url.lastPathComponent!
+        let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first! as NSString
+        let localPath = documentDirectory.appendingPathComponent(imageName)
+
+        let data = NSData(data: photo.pngData()!)
+        data.write(toFile: localPath, atomically: true)
+        
+        StorageService.storageBabyPhoto(url: url.lastPathComponent!)
     }
 }

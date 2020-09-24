@@ -11,9 +11,11 @@ import UIKit
 protocol BirthdayViewOutput: class {
     func viewDidLoad()
     func imageForNumberImageView() -> UIImage?
+    func photo() -> UIImage?
     func babyName() -> String?
     func babyAge() -> String?
     func closeTapped()
+    func didSelect(photo: UIImage?, by url: NSURL?)
 }
 
 protocol BirthdayViewInput: class {
