@@ -11,6 +11,7 @@ import UIKit
 final class AppCoordinator {
     private let window: UIWindow
     private let navigation: UINavigationController
+    private var birthdayVC: BirthdayViewController?
 
     init(window: UIWindow) {
         self.window = window
@@ -28,11 +29,15 @@ final class AppCoordinator {
 extension AppCoordinator: WelcomeRouterDelegate {
     func showBirthday() {
         let router = BirthdayRouter(coordinator: self)
-        let viewController = router.build()
-        viewController.modalPresentationStyle = .fullScreen
-        navigation.present(viewController, animated: true)
+        birthdayVC = router.build()
+        birthdayVC?.modalPresentationStyle = .fullScreen
+        navigation.present(birthdayVC!, animated: true)
     }
 }
 
-extension AppCoordinator: BirthdayRouterDelegate {}
+extension AppCoordinator: BirthdayRouterDelegate {
+    func dismiss() {
+        birthdayVC?.dismiss(animated: true)
+    }
+}
 

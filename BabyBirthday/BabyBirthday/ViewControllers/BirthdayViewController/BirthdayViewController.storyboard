@@ -44,12 +44,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5o-6R-cCx">
-                                <rect key="frame" x="17" y="17" width="14" height="14"/>
+                                <rect key="frame" x="17" y="61" width="14" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="14" id="7G5-Nr-SYO"/>
                                     <constraint firstAttribute="width" constant="14" id="GLK-eX-EHh"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="btn_close"/>
+                                <connections>
+                                    <action selector="closeTapped" destination="kmf-Yi-DZW" eventType="touchUpInside" id="uaF-AX-UOa"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Right swirls" translatesAutoresizingMaskIntoConstraints="NO" id="QiA-6o-bf1">
                                 <rect key="frame" x="257" y="132" width="52" height="46"/>
@@ -75,7 +78,7 @@
                             <constraint firstItem="DZi-wJ-KhH" firstAttribute="top" secondItem="iLX-pV-Rkv" secondAttribute="top" constant="106" id="dK6-pI-96I"/>
                             <constraint firstItem="sL2-2Z-VuB" firstAttribute="trailing" secondItem="LQf-he-UpW" secondAttribute="trailing" constant="80" id="fcJ-uV-eH9"/>
                             <constraint firstItem="yKU-ZI-eFU" firstAttribute="leading" secondItem="sL2-2Z-VuB" secondAttribute="leading" id="hmS-4C-piL"/>
-                            <constraint firstItem="h5o-6R-cCx" firstAttribute="top" secondItem="iLX-pV-Rkv" secondAttribute="top" constant="17" id="oWJ-ct-lNO"/>
+                            <constraint firstItem="h5o-6R-cCx" firstAttribute="top" secondItem="sL2-2Z-VuB" secondAttribute="top" constant="17" id="oWJ-ct-lNO"/>
                             <constraint firstItem="yKU-ZI-eFU" firstAttribute="trailing" secondItem="sL2-2Z-VuB" secondAttribute="trailing" id="uYT-L4-Csw"/>
                             <constraint firstItem="h5o-6R-cCx" firstAttribute="leading" secondItem="sL2-2Z-VuB" secondAttribute="leading" constant="17" id="wnW-Ys-RkZ"/>
                         </constraints>

@@ -67,4 +67,8 @@ extension BirthdayPresenter: BirthdayViewOutput {
     func defaultPhotoImage() -> UIImage? {
         return currentPresentationType.iconPlacehoderCamera
     }
+    
+    func closeTapped() {
+        router.dismiss()
+    }
 }

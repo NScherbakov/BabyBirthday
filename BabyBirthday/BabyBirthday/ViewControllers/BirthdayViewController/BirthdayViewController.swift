@@ -35,6 +35,14 @@ final class BirthdayViewController: UIViewController {
     }
 }
 
+// MARK: - Actions
+
+extension BirthdayViewController {
+    @IBAction func closeTapped() {
+        presenter?.closeTapped()
+    }
+}
+
 // MARK: - Private
 
 private extension BirthdayViewController {

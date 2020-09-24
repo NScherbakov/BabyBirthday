@@ -8,7 +8,9 @@
 
 import Foundation
 
-protocol BirthdayRouterDelegate: class {}
+protocol BirthdayRouterDelegate: class {
+    func dismiss()
+}
 
 final class BirthdayRouter {
     private weak var delegate: BirthdayRouterDelegate?
@@ -25,5 +27,9 @@ final class BirthdayRouter {
         presenter.view = viewController
 
         return viewController
+    }
+    
+    func dismiss() {
+        delegate?.dismiss()
     }
 }

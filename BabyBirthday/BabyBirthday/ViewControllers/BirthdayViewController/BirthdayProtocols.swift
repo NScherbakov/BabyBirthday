@@ -13,6 +13,7 @@ protocol BirthdayViewOutput: class {
     func imageForNumberImageView() -> UIImage?
     func babyName() -> String?
     func babyAge() -> String?
+    func closeTapped()
 }
 
 protocol BirthdayViewInput: class {
