@@ -28,7 +28,6 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter?.viewDidLoad()
         configTextFields()
         configButton()
     }
@@ -56,8 +55,9 @@ extension WelcomeViewController {
             return
         }
         
-        if nameText.isEmpty && birhdayText.isEmpty {
-            let alert = UIAlertController(title: "Sorry", message: "Fill all fields please",
+        if nameText.isEmpty || birhdayText.isEmpty {
+            let alert = UIAlertController(title: "Sorry",
+                                          message: "Fill all fields please",
                                           preferredStyle: UIAlertController.Style.alert)
 
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default))
@@ -92,8 +92,8 @@ private extension WelcomeViewController {
         datePicker = DatePicker(minDate: minDate,
                                 maxDate: maxDate,
                                 currentDate: currentDate) { [weak self] date in
-                                    
             guard let strongSelf = self else { return }
+                                    
             strongSelf.configBirthdayTextFieldWith(date: date)
         }
    
@@ -116,6 +116,7 @@ private extension WelcomeViewController {
     func configImageViewWith(type: PresentationType) {
         if let image = presenter?.babyPhoto() {
             imagePhotoView.image = image
+            imagePhotoView.layer.cornerRadius = imagePhotoView.frame.width / 2
         } else {
             imagePhotoView.image = type.iconPlacehoderCamera
         }
@@ -157,12 +158,17 @@ extension WelcomeViewController: UITextFieldDelegate {
         }
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
         if textField == birhdayTextField {
             return false
+        } else {
+            guard let text = textField.text else { return true }
+            let newLength = text.count + string.count - range.length
+            
+            return newLength <= 20
         }
-        
-        return true
     }
 }
 
@@ -171,6 +177,7 @@ extension WelcomeViewController: UITextFieldDelegate {
 extension WelcomeViewController: ImagePickerDelegate {
     func didSelect(image: UIImage?, imageUrl: NSURL?) {
         imagePhotoView.image = image
+        imagePhotoView.layer.cornerRadius = imagePhotoView.frame.width / 2
         presenter?.didSelect(photo: image, by: imageUrl)
     }
 }
@@ -180,6 +187,7 @@ extension WelcomeViewController: ImagePickerDelegate {
 extension WelcomeViewController: CommonToolbarDelegate {
     func commonToolbarCancelTapped(_ view: CommonToolbar) {
         birhdayTextField.text = ""
+        presenter?.changed(birthday: nil)
         self.view.endEditing(true)
         configButton()
     }

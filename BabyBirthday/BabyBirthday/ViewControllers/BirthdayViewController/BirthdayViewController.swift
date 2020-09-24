@@ -16,17 +16,19 @@ final class BirthdayViewController: UIViewController {
     @IBOutlet weak var babeAgeLabel: UILabel!
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var numberImageView: UIImageView!
+    @IBOutlet weak var cyrcelmageView: UIImageView!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var logoStackView: UIStackView!
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var photoButton: UIButton!
+    @IBOutlet weak var originYphotoImageView: NSLayoutConstraint!
+    @IBOutlet weak var originYcameraImageView: NSLayoutConstraint!
     
     // MARK: - Variables
     
     var presenter: BirthdayViewOutput?
     private var imagePicker: ImagePicker?
-    private var activityViewController: UIActivityViewController?
     
     // MARK: - Override
     
@@ -37,6 +39,7 @@ final class BirthdayViewController: UIViewController {
         configLabels()
         configButton()
         configPhotoImageView()
+        configUIforCurrentDevice()
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -78,9 +81,21 @@ private extension BirthdayViewController {
     }
     
     func configPhotoImageView() {
-        photoImageView.layer.cornerRadius = 120
+        photoImageView.layer.cornerRadius = photoImageView.frame.width / 2
         if let image = presenter?.photo() {
             photoImageView.image = image
+        }
+    }
+    
+    func configUIforCurrentDevice() {
+        if isIphoneX() {
+            backgroundImageView.contentMode = .bottom
+            originYphotoImageView.constant = 110
+            originYcameraImageView.constant = 128
+            cyrcelmageView.isHidden = false
+            view.layoutIfNeeded()
+        } else {
+            backgroundImageView.contentMode = .scaleAspectFit
         }
     }
 }
@@ -92,6 +107,7 @@ extension BirthdayViewController: BirthdayViewInput {
         backgroundImageView.image = type.screenImage
         photoImageView.image = type.iconPlacehoderCamera
         photoButton.setBackgroundImage(type.iconCamera, for: .normal)
+        cyrcelmageView.image = type.cyrcleImage
         
         switch type.position {
         case .left:
@@ -112,11 +128,11 @@ extension BirthdayViewController: BirthdayViewInput {
     func showShare(image: UIImage?) {
         guard let image = image else { return }
         
-        activityViewController = UIActivityViewController(activityItems: ["Look!", image],
+        let activityViewController = UIActivityViewController(activityItems: ["Look!", image],
                                                               applicationActivities: [])
    
-        activityViewController!.popoverPresentationController?.sourceView = self.view
-        present(activityViewController!, animated: true, completion: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        present(activityViewController, animated: true, completion: nil)
     }
 }
 
@@ -126,5 +142,16 @@ extension BirthdayViewController: ImagePickerDelegate {
     func didSelect(image: UIImage?, imageUrl: NSURL?) {
         photoImageView.image = image
         presenter?.didSelect(photo: image, by: imageUrl)
+    }
+}
+
+private extension BirthdayViewController {
+    private func isIphoneX() -> Bool {
+        let topPadding =  UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.safeAreaInsets.top
+        
+        guard #available(iOS 11.0, *), let padding = topPadding, padding > 24 else {
+            return false
+        }
+        return true
     }
 }

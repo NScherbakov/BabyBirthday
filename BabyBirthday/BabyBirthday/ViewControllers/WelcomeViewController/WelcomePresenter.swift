@@ -23,10 +23,6 @@ final class WelcomePresenter {
     init(router: WelcomeRouter) {
         self.router = router
     }
-    
-    var docmentsUrl: URL {
-        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-    }
 }
 
 // MARK: - WelcomeViewOutput
@@ -34,10 +30,6 @@ final class WelcomePresenter {
 extension WelcomePresenter: WelcomeViewOutput {
     func didTapShowBirthday() {
         router.showBirthday()
-    }
-    
-    func viewDidLoad() {
-        view?.configWithPresentation(type: currentPresentationType)
     }
     
     func viewWillAppear() {
@@ -69,6 +61,11 @@ extension WelcomePresenter: WelcomeViewOutput {
         return Date()
     }
     
+    func minDateForDatePicker() -> Date {
+        let date = Calendar.current.date(byAdding: .year, value: -maxYearsOld, to: Date())
+        return date ?? Date()
+    }
+    
     func babyName() -> String? {
         return StorageService.readBabyName()
     }
@@ -90,10 +87,5 @@ extension WelcomePresenter: WelcomeViewOutput {
         }
         
         return nil
-    }
-    
-    func minDateForDatePicker() -> Date {
-        let date = Calendar.current.date(byAdding: .year, value: -maxYearsOld, to: Date())
-        return date ?? Date()
     }
 }

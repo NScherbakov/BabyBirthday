@@ -9,7 +9,6 @@
 import UIKit
 
 protocol WelcomeViewOutput: class {
-    func viewDidLoad()
     func viewWillAppear()
     func didTapShowBirthday()
     

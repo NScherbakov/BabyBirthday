@@ -52,11 +52,19 @@ enum PresentationType: CaseIterable {
         }
     }
     
+    var cyrcleImage: UIImage? {
+        switch self {
+        case .fox:
+            return UIImage(named: "cyrcle_green")
+        case .bird:
+            return UIImage(named: "cyrcle_blue")
+        case .elephant:
+            return UIImage(named: "cyrcle_yellow")
+        }
+    }
+    
     var screenImage: UIImage? {
-        
-        // Workaround because 2 diffrent images for big and normal sizes screen
-        
-        if #available(iOS 11.0, tvOS 11.0, *) {
+        if isIphoneX() {
             switch self {
             case .fox:
                 return UIImage(named: "fox_iphoneX_fox")
@@ -90,5 +98,14 @@ enum PresentationType: CaseIterable {
     
     static func randomCase() -> PresentationType {
         return PresentationType.allCases[Int(arc4random_uniform(UInt32(PresentationType.allCases.count)))]
+    }
+    
+    private func isIphoneX() -> Bool {
+        let topPadding =  UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.safeAreaInsets.top
+        
+        guard #available(iOS 11.0, *), let padding = topPadding, padding > 24 else {
+            return false
+        }
+        return true
     }
 }
