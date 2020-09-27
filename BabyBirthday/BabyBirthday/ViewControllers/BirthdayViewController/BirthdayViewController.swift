@@ -126,17 +126,6 @@ extension BirthdayViewController: BirthdayViewInput {
 extension BirthdayViewController: ImagePickerDelegate {
     func didSelect(image: UIImage?) {
         photoImageView.image = image
-        presenter?.didSelect(photo: image, by: imageUrl)
-    }
-}
-
-private extension BirthdayViewController {
-    private func isIphoneX() -> Bool {
-        let topPadding =  UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.safeAreaInsets.top
-        
-        guard #available(iOS 11.0, *), let padding = topPadding, padding > 24 else {
-            return false
-        }
-        return true
+        presenter?.didSelect(photo: image)
     }
 }

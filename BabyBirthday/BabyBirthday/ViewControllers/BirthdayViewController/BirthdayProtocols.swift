@@ -15,7 +15,7 @@ protocol BirthdayViewOutput: class {
     func babyName() -> String?
     func babyAge() -> String?
     func closeTapped()
-    func didSelect(photo: UIImage?, by url: NSURL?)
+    func didSelect(photo: UIImage?)
     func shareTapped(in content: UIView)
 }
 

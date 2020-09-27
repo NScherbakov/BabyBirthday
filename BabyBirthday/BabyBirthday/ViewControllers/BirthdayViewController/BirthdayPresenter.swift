@@ -93,7 +93,7 @@ extension BirthdayPresenter: BirthdayViewOutput {
         return nil
     }
     
-    func didSelect(photo: UIImage?, by url: NSURL?) {
+    func didSelect(photo: UIImage?) {
         guard let photo = photo else { return }
         
         let imageName = ImageName.baby
@@ -102,8 +102,6 @@ extension BirthdayPresenter: BirthdayViewOutput {
 
         let data = NSData(data: photo.pngData()!)
         data.write(toFile: localPath, atomically: true)
-        
-        StorageService.storageBabyPhoto(url: imageName)
     }
     
     func shareTapped(in content: UIView) {

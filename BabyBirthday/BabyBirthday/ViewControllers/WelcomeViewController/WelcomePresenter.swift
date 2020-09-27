@@ -48,8 +48,6 @@ extension WelcomePresenter: WelcomeViewOutput {
 
         let data = NSData(data: photo.pngData()!)
         data.write(toFile: localPath, atomically: true)
-        
-        StorageService.storageBabyPhoto(url: imageName)
     }
     
     func changed(name: String?) {

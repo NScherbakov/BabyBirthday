@@ -141,7 +141,7 @@ extension WelcomeViewController: UITextFieldDelegate {
 // MARK: - ImagePickerDelegate
 
 extension WelcomeViewController: ImagePickerDelegate {
-    func didSelect(image: UIImage?, imageUrl: NSURL?) {
+    func didSelect(image: UIImage?) {
         imagePhotoView.image = image
         presenter?.didSelect(photo: image)
     }
