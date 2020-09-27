@@ -17,10 +17,10 @@ protocol WelcomeViewOutput: class {
     
     func changed(name: String?)
     func changed(birthday: Date?)
-    func didSelect(photo: UIImage?, by: NSURL?)
+    func didSelect(photo: UIImage?)
     
     func babyName() -> String?
-    func babyBirthday() -> Date?
+    func babyBirthday() -> Date
     func babyPhoto() -> UIImage?
 }
 

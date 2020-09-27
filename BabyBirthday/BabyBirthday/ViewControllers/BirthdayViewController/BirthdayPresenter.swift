@@ -60,10 +60,18 @@ extension BirthdayPresenter: BirthdayViewOutput {
         
         let dates = Date() - birthday
         if let year = dates.year, year > 0 {
-            return "YEARS OLD!"
-        } else {
+            if year > 1 {
+                return "YEARS OLD!"
+            }
+            return "YEAR OLD!"
+        } else if let month = dates.month {
+            if month > 1 {
+                return "MONTHS OLD!"
+            }
             return "MONTH OLD!"
         }
+        
+        return ""
     }
     
     func closeTapped() {
@@ -71,7 +79,7 @@ extension BirthdayPresenter: BirthdayViewOutput {
     }
     
     func photo() -> UIImage? {
-        guard let imageName = StorageService.readBabyPhotoUrl() else { return nil }
+        let imageName = ImageName.baby
         
         let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
         let nsUserDomainMask = FileManager.SearchPathDomainMask.userDomainMask
@@ -86,16 +94,16 @@ extension BirthdayPresenter: BirthdayViewOutput {
     }
     
     func didSelect(photo: UIImage?, by url: NSURL?) {
-        guard let url = url, let photo = photo else { return }
+        guard let photo = photo else { return }
         
-        let imageName = url.lastPathComponent!
+        let imageName = ImageName.baby
         let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first! as NSString
         let localPath = documentDirectory.appendingPathComponent(imageName)
 
         let data = NSData(data: photo.pngData()!)
         data.write(toFile: localPath, atomically: true)
         
-        StorageService.storageBabyPhoto(url: url.lastPathComponent!)
+        StorageService.storageBabyPhoto(url: imageName)
     }
     
     func shareTapped(in content: UIView) {

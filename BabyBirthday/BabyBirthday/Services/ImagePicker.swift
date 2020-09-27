@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ImagePickerDelegate: class {
-    func didSelect(image: UIImage?, imageUrl: NSURL?)
+    func didSelect(image: UIImage?)
 }
 
 class ImagePicker: NSObject {
@@ -43,7 +43,6 @@ class ImagePicker: NSObject {
         }
         
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alertController.pruneNegativeWidthConstraints()
         
         if UIDevice.current.userInterfaceIdiom == .pad {
             alertController.popoverPresentationController?.sourceView = sourceView
@@ -74,7 +73,7 @@ private extension ImagePicker {
                                   url: NSURL?) {
         controller.dismiss(animated: true, completion: nil)
         
-        delegate?.didSelect(image: image, imageUrl: url)
+        delegate?.didSelect(image: image)
     }
 }
 
@@ -97,14 +96,3 @@ extension ImagePicker: UIImagePickerControllerDelegate {
 }
 
 extension ImagePicker: UINavigationControllerDelegate { }
-
-// WorkAround - sometimes bug on iOS https://forums.swift.org/t/swift-3-to-swift-5-uiimagepickercontroller/36640/4
-extension UIAlertController {
-    func pruneNegativeWidthConstraints() {
-        for subView in self.view.subviews {
-            for constraint in subView.constraints where constraint.debugDescription.contains("width == - 16") {
-                subView.removeConstraint(constraint)
-            }
-        }
-    }
-}

@@ -29,6 +29,9 @@ final class WelcomePresenter {
 
 extension WelcomePresenter: WelcomeViewOutput {
     func didTapShowBirthday() {
+        if StorageService.readBabyBirthday() == nil {
+            StorageService.storageBaby(birthday: Date())
+        }
         router.showBirthday()
     }
     
@@ -36,17 +39,17 @@ extension WelcomePresenter: WelcomeViewOutput {
         view?.configWithPresentation(type: currentPresentationType)
     }
     
-    func didSelect(photo: UIImage?, by url: NSURL?) {
-        guard let url = url, let photo = photo else { return }
+    func didSelect(photo: UIImage?) {
+        guard let photo = photo else { return }
         
-        let imageName = url.lastPathComponent!
+        let imageName = ImageName.baby
         let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first! as NSString
         let localPath = documentDirectory.appendingPathComponent(imageName)
 
         let data = NSData(data: photo.pngData()!)
         data.write(toFile: localPath, atomically: true)
         
-        StorageService.storageBabyPhoto(url: url.lastPathComponent!)
+        StorageService.storageBabyPhoto(url: imageName)
     }
     
     func changed(name: String?) {
@@ -70,12 +73,12 @@ extension WelcomePresenter: WelcomeViewOutput {
         return StorageService.readBabyName()
     }
     
-    func babyBirthday() -> Date? {
-        return StorageService.readBabyBirthday()
+    func babyBirthday() -> Date {
+        return StorageService.readBabyBirthday() ?? Date()
     }
     
     func babyPhoto() -> UIImage? {
-        guard let imageName = StorageService.readBabyPhotoUrl() else { return nil }
+        let imageName = ImageName.baby
         
         let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
         let nsUserDomainMask = FileManager.SearchPathDomainMask.userDomainMask

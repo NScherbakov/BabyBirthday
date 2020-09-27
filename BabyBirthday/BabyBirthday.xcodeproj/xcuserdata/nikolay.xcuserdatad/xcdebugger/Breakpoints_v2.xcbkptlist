@@ -55,33 +55,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8B42515F-F1C9-44A3-9C47-F6C1C565EF9B"
+            uuid = "151441B4-19CA-4E6F-8E4C-A12562A376D6"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BabyBirthday/Helpers/PresentationType.swift"
+            filePath = "BabyBirthday/ViewControllers/WelcomeViewController/WelcomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "screenImage"
-            landmarkType = "24">
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7D1A52EC-23EB-4FC0-BB57-79884E852A93"
-            shouldBeEnabled = "No"
+            uuid = "FC236723-604B-477E-AB08-09059BC6A0FF"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BabyBirthday/Helpers/PresentationType.swift"
+            filePath = "BabyBirthday/ViewControllers/WelcomeViewController/WelcomePresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "screenImage"
-            landmarkType = "24">
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "didSelect(photo:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -22,8 +22,6 @@ final class BirthdayViewController: UIViewController {
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var photoButton: UIButton!
-    @IBOutlet weak var originYphotoImageView: NSLayoutConstraint!
-    @IBOutlet weak var originYcameraImageView: NSLayoutConstraint!
     
     // MARK: - Variables
     
@@ -39,7 +37,6 @@ final class BirthdayViewController: UIViewController {
         configLabels()
         configButton()
         configPhotoImageView()
-        configUIforCurrentDevice()
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -86,18 +83,6 @@ private extension BirthdayViewController {
             photoImageView.image = image
         }
     }
-    
-    func configUIforCurrentDevice() {
-        if isIphoneX() {
-            backgroundImageView.contentMode = .bottom
-            originYphotoImageView.constant = 110
-            originYcameraImageView.constant = 128
-            cyrcelmageView.isHidden = false
-            view.layoutIfNeeded()
-        } else {
-            backgroundImageView.contentMode = .scaleAspectFit
-        }
-    }
 }
 
 // MARK: - BirthdayViewInput
@@ -139,7 +124,7 @@ extension BirthdayViewController: BirthdayViewInput {
 // MARK: - ImagePickerDelegate
 
 extension BirthdayViewController: ImagePickerDelegate {
-    func didSelect(image: UIImage?, imageUrl: NSURL?) {
+    func didSelect(image: UIImage?) {
         photoImageView.image = image
         presenter?.didSelect(photo: image, by: imageUrl)
     }

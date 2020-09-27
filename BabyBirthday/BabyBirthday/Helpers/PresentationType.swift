@@ -64,24 +64,13 @@ enum PresentationType: CaseIterable {
     }
     
     var screenImage: UIImage? {
-        if isIphoneX() {
-            switch self {
-            case .fox:
-                return UIImage(named: "fox_iphoneX_fox")
-            case .bird:
-                return UIImage(named: "fox_iphoneX_bird")
-            case .elephant:
-                return UIImage(named: "fox_iphoneX_elephant")
-            }
-        }
-        
         switch self {
         case .fox:
-            return UIImage(named: "iOS_Fox")
+            return UIImage(named: "fox_iphoneX_fox")
         case .bird:
-            return UIImage(named: "iOS_Pelican")
+            return UIImage(named: "fox_iphoneX_bird")
         case .elephant:
-            return UIImage(named: "iOS_elephant")
+            return UIImage(named: "fox_iphoneX_elephant")
         }
     }
     
